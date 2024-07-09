@@ -1,23 +1,30 @@
 function getUsers() {
-  axios.get("https://jsonplaceholder.typicode.com/users").then((Response) => {
-    let users = Response.data;
-    let contentUser = document.querySelector(".content_user");
-    contentUser.innerHTML = "";
-    for (const user of users) {
-      contentUser.innerHTML += `
-       <div id="user" class="bg-primary p-2 rounded" onclick = "selectedUser(${user.id}, this)">
-              <h3 id="user_title" class="h5">${user.username}</h3>
-              <h5 class="lead text-capitalize">${user.email}.</h5>
-            </div>
-      `;
-    }
+  return new Promise((resolve, reject) => {
+    axios.get("https://jsonplaceholder.typicode.com/users").then((Response) => {
+      let users = Response.data;
+      let contentUser = document.querySelector(".content_user");
+      contentUser.innerHTML = "";
+      for (const user of users) {
+        contentUser.innerHTML += `
+         <div id="user" class="bg-primary p-2 rounded" onclick = "selectedUser(${user.id}, this)">
+                <h3 id="user_title" class="h5">${user.username}</h3>
+                <h5 class="lead text-capitalize">${user.email}.</h5>
+              </div>
+        `;
+      }
+      resolve();
+      reject("Error");
+    });
   });
 }
-getUsers();
+getUsers()
+  .then(() => getPosts())
+  .catch(() => Error("No Data"));
 
 function getPosts(userId = 4) {
+  let Url = "https://jsonplaceholder.typicode.com/posts?userId=" + userId;
   axios
-    .get("https://jsonplaceholder.typicode.com/posts?userId=" + userId)
+    .get(Url)
     .then((response) => {
       let posts = response.data;
       let content_body = document.querySelector(".content_user_body");
