@@ -1,26 +1,36 @@
 * {
-    margin: 0;
-    bottom: 0;
-    box-sizing: border-box;
+  margin: 0;
+  bottom: 0;
+  box-sizing: border-box;
 }
-#user {
-    cursor: pointer;
-    transition: background-color .2s ease;
-    margin-bottom: 10px;
-    border: 2px solid transparent ;
+.content_user {
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  margin-bottom: 10px;
+  border: 2px solid transparent;
 }
 #user.selectedUser {
-    border: 3px solid white ;
+  border: 3px solid white;
+}
+#user {
+  border: 3px solid transparent;
+  transition: all .3s ease;
 }
 #user:hover {
-    background-color: #007bff8d !important;
+  background-color: #007bff8d !important;
 }
-[type=button]:not(:disabled), [type=reset]:not(:disabled), [type=submit]:not(:disabled), button:not(:disabled) {
-    cursor: pointer;
-    background: #6b4a18;
-    width: 100%;
-    color: white;
-    outline: none;
-    border: none;
-    border-radius: 10px;
+[type="button"]:not(:disabled),
+[type="reset"]:not(:disabled),
+[type="submit"]:not(:disabled),
+button:not(:disabled) {
+  cursor: pointer;
+  background: #6b4a18;
+  width: 100%;
+  color: white;
+  outline: none;
+  border: none;
+  border-radius: 10px;
+}
+#user {
+  margin-top: 10px;
 }
